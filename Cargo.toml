@@ -1,6 +1,6 @@
 [package]
 name = "bunsh"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "Easily iterate on typescript scripts so you can write less shell commands"
 license = "MIT"

@@ -32,6 +32,11 @@ enum Cmd {
         /// Shell to generate completions for
         shell: Shell,
     },
+    /// Delete a saved script
+    Rm {
+        /// Script name, partial match, or path
+        script: String,
+    },
     /// Print shell init script (wrapper function for history rewriting)
     Init {
         /// Shell to generate init script for
@@ -187,6 +192,17 @@ fn main() -> ExitCode {
         }
         Some(Cmd::Run { script }) => match resolve_script(&script) {
             Some(path) => open_and_run(&path),
+            None => {
+                eprintln!("no script matching '{script}' found");
+                ExitCode::FAILURE
+            }
+        },
+        Some(Cmd::Rm { script }) => match resolve_script(&script) {
+            Some(path) => {
+                println!("removing {}", path.display());
+                fs::remove_file(&path).expect("failed to remove script");
+                ExitCode::SUCCESS
+            }
             None => {
                 eprintln!("no script matching '{script}' found");
                 ExitCode::FAILURE
