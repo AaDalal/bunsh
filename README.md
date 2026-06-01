@@ -16,20 +16,22 @@ Easily iterate on js scripts so you can write less shell commands
 <p align="center">
   <img src="demo.gif" alt="animated gif of using bunsh" width="80%" />
 </p>
+<p align="center" style="font-style: italic">
+Create a simple script using bunsh, see the output and then iterate by pressing the up-arrow!
+</p>
 
 #### How to use
 
-run bunsh to create a script ->
-edit your ts script ->
-quit your editor; your script is run automatically ->
-press ↑ to iterate on the same script
+1. Run bunsh to create a script
+2. Edit your ts script
+3. Quit your editor; your script is run automatically
+4. Press ↑ to iterate on the same script
 
-
-it replicates the feel of a repl while maintaining scripts
+It replicates the feel of a repl (fast iteration), but you come away with a clean script
 
 #### Features
 
-- Automatically edits history so you can easily edit the last script you used with `bunsh` (supports fish, zsh, bash and the atuin shell history manager)
+- Automatically edits shell history so you can iterate on scripts created with `bunsh` (supports fish, zsh, bash and the atuin shell history manager)
 - Get typescript lsp if your editor (from $EDITOR) supports it (automatically copies the `src/tsconfig.json` from this repo)
 - Includes a prelude: `import { $ } from "bun"` (if you wish to change this, you can clone the repo and edit src/default_imports.ts)
 - Saves scripts to `~/.local/share/bunsh` timestamped so you can copy them (you can also give them custom names)
@@ -37,31 +39,34 @@ it replicates the feel of a repl while maintaining scripts
 
 ### Installation
 
-*Dependencies*
-- bun (if you don't like bun you can tweak the code to swap it out for `python`, `node` or your preferred scripting setup)
-- rust/cargo (just to build it, sadly I don't have a prebuilt vesion yet)
+*Before you start, you'll need*
+- [Bun](https://bun.com/docs/installation) (if you don't like bun you can tweak the code to swap it out for `python`, `node` or your preferred scripting setup)
+- [rust/cargo](https://rust-lang.org/tools/install/)
+   - (just to compile it for your system; sadly I don't have a prebuilt vesion yet)
+
+---
 
 1. Run `cargo install bunsh` to install `bunsh`
-2. Eval `bunsh init <your_shell_eg_zsh>` in your shell config to allow bunsh to automatically edit history (the first [Feature](#Features))
+2. Eval `bunsh init <your_shell_eg_zsh>` in your shell config. This allow bunsh to automatically edit history (the first [Feature](#Features) in the list)
 ```sh
-# If your shell is zsh (default on macos)
+# If your shell is zsh (default on macos), add this to your ~/.zshrc
 eval "$(bunsh init zsh)"
 
-# bash
+# bash: add to ~/.bashrc
 eval "$(bunsh init bash)"
 
-# fish
+# fish: add to ~/.config/fish/config.fish
 bunsh init fish | source
 ```
 3. (optional) Eval `bunsh completions <shell>` for shell completions
 ```sh
-# If your shell is zsh (default on macos)
+# If your shell is zsh (default on macos), add this to your ~/.zshrc
 eval "$(bunsh completions zsh)"
 
-# bash
+# bash: add to ~/.bashrc
 eval "$(bunsh completions bash)"
 
-# fish
+# fish: add to ~/.config/fish/config.fish
 bunsh completions fish | source
 ```
 
