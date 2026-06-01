@@ -41,7 +41,7 @@ it replicates the feel of a repl while maintaining scripts
 - bun (if you don't like bun you can tweak the code to swap it out for `python`, `node` or your preferred scripting setup)
 - rust/cargo (just to build it, sadly I don't have a prebuilt vesion yet)
 
-1. Run `cargo install --path .` to install `bunsh`
+1. Run `cargo install bunsh` to install `bunsh`
 2. Eval `bunsh init <your_shell_eg_zsh>` in your shell config to allow bunsh to automatically edit history (the first [Feature](#Features))
 ```sh
 # If your shell is zsh (default on macos)
