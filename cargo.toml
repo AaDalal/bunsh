@@ -1,0 +1,15 @@
+[package]
+name = "bunsh"
+version = "0.1.0"
+edition = "2024"
+description = "Easily iterate on typescript scripts so you can write less shell commands"
+license = "MIT"
+repository = "https://github.com/aadalal/bunsh"
+keywords = ["bun", "typescript", "scripting", "editor"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+chrono = "0.4"
+directories = "6"
+clap = { version = "4", features = ["derive"] }
+clap_complete = "4"

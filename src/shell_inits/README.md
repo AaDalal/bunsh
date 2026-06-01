@@ -1,7 +1,7 @@
 ## Shell Inits
 
 When you run `bunsh` (no args) to create a script, it appends `bunsh <path/to/script.ts>`
-to the history so you can click the up arrow and edit+run the script
+to the history so you can click the ↑ and edit+run the script
 
 How: the binary emits a machine-readable line on stderr:
 ```stdout
