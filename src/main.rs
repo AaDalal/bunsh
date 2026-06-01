@@ -6,6 +6,7 @@ use std::process::{Command, ExitCode};
 
 use clap::{Parser, Subcommand};
 use clap_complete::{Shell, generate};
+use directories::ProjectDirs;
 
 #[derive(Parser)]
 #[command(name = "bunsh", about = "Edit and run TypeScript scripts with bun")]
@@ -38,14 +39,12 @@ enum Cmd {
     },
 }
 
+fn project_dirs() -> ProjectDirs {
+    ProjectDirs::from("", "", "bunsh").expect("could not determine home directory")
+}
+
 fn scripts_dir() -> PathBuf {
-    let base = env::var("XDG_DATA_HOME")
-        .map(PathBuf::from)
-        .unwrap_or_else(|_| {
-            let home = env::var("HOME").expect("HOME not set");
-            PathBuf::from(home).join(".local/share")
-        });
-    base.join("bunsh")
+    project_dirs().data_dir().to_path_buf()
 }
 
 fn new_script_path() -> PathBuf {
