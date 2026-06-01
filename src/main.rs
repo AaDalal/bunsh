@@ -200,9 +200,9 @@ fn main() -> ExitCode {
         }
         Some(Cmd::Init { shell }) => {
             match shell {
-                Shell::Fish => print!("{}", include_str!("bunsh.fish")),
-                Shell::Bash => print!("{}", include_str!("bunsh.bash")),
-                Shell::Zsh => print!("{}", include_str!("bunsh.zsh")),
+                Shell::Fish => print!("{}", include_str!("shell_inits/bunsh.fish")),
+                Shell::Bash => print!("{}", include_str!("shell_inits/bunsh.bash")),
+                Shell::Zsh => print!("{}", include_str!("shell_inits/bunsh.zsh")),
                 _ => eprintln!("init not yet supported for {shell}"),
             }
             ExitCode::SUCCESS
