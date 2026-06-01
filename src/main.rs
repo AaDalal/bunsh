@@ -107,7 +107,7 @@ fn list_scripts() {
         return;
     }
     for entry in &entries {
-        println!("{}", entry.file_name().unwrap().to_str().unwrap());
+        println!("{}", entry.display());
     }
 }
 
@@ -136,8 +136,7 @@ fn open_and_run(path: &PathBuf) -> ExitCode {
     };
 
     let default_imports = include_str!("default_imports.ts");
-    let is_unmodified = contents.trim().is_empty()
-        || contents.trim() == default_imports.trim();
+    let is_unmodified = contents.trim().is_empty() || contents.trim() == default_imports.trim();
 
     if is_unmodified {
         eprintln!("unmodified file, skipping execution");
